@@ -1,6 +1,29 @@
 
 #include <Stepper.h>
 
+int current_angle=0;
+
+// Defines the number of steps per rotation
+
+//const int stepsPerRevolution = 2038;
+
+const int stepsPerRevolution = 57;
+
+// Creates an instance of stepper class
+
+// Pins entered in sequence IN1-IN3-IN2-IN4 for proper step sequence
+
+Stepper myStepper = Stepper(stepsPerRevolution, 8, 10, 9, 11);
+
+void start()
+{
+  
+   myStepper.setSpeed(10);
+
+  myStepper.step(-((stepsPerRevolution*3)/2));
+
+  current_angle=current_angle+30;
+}
 
 void setup() {
   // put your setup code here, to run once:
@@ -30,6 +53,7 @@ void loop() {
    }
    if(start1==1)
    {
+     start();
     Serial.println("blue button");
    }
    if(stop1==1)
