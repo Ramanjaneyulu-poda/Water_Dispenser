@@ -25,6 +25,26 @@ void start()
   current_angle=current_angle+30;
 }
 
+void dec_flow()
+{
+  if(current_angle>0)
+  {
+    myStepper.setSpeed(10);
+    myStepper.step(stepsPerRevolution);
+    current_angle=current_angle-10;
+
+  //delay(1000);
+  }
+
+  else
+  {
+    Serial.print("value is max :");
+    Serial.println(current_angle);
+  }
+
+}
+
+
 void setup() {
   // put your setup code here, to run once:
    Serial.begin(9600);
@@ -49,6 +69,7 @@ void loop() {
    }
    if(decrease==1)
    {
+    dec_flow();
     Serial.println("blue button");
    }
    if(start1==1)
