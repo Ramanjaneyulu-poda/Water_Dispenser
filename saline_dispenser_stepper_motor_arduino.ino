@@ -61,6 +61,16 @@ void increase_flow()
   }
 }
 
+void stop()
+{
+  //stepsPerRevolution=current_angle;
+   myStepper.setSpeed(10);
+  myStepper.step((current_angle*5.6));
+   current_angle=0;
+ //delay(1000);
+
+}
+
 
 void setup() {
   // put your setup code here, to run once:
@@ -97,6 +107,7 @@ void loop() {
    }
    if(stop1==1)
    {
+    stop();
     Serial.println("blue button");
    }
   delay(1000);
