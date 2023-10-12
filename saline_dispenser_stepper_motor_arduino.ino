@@ -44,6 +44,23 @@ void dec_flow()
 
 }
 
+void increase_flow()
+{
+  if(current_angle<360)
+  {
+    myStepper.setSpeed(10);
+  myStepper.step(-stepsPerRevolution);
+   current_angle=current_angle+10;
+
+  //delay(1000);
+  }
+  else
+  {
+      Serial.print("min value");
+      Serial.println(current_angle);
+  }
+}
+
 
 void setup() {
   // put your setup code here, to run once:
@@ -65,6 +82,7 @@ void loop() {
    Serial.println(current_angle);
    if(increase==1)
    {
+    increase_flow();
     Serial.println("blue button");
    }
    if(decrease==1)
